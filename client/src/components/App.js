@@ -6,7 +6,7 @@ import Landing from './Landing';
 import Header from './Header';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-
+import ItemForm from './items/ItemForm';
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -20,6 +20,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
+            <Route path="/items/new" component={ItemForm}/>
           </div>
         </BrowserRouter>
       </div>
