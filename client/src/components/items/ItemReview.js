@@ -1,10 +1,23 @@
+import _ from 'lodash';
 import React from 'react';
 import ItemFormFields from './itemFormFields'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const ItemReview = ({onCancel, formValues }) => {
-  return <div>test</div>
+const ItemReview = ({ onCancel, formValues }) => {
+  const reviewFields = _.map(ItemFormFields, ({ name, label }) => {
+    return (
+      <div>
+        <label>
+          {label}
+        </label>
+        <div>
+          {formValues[name]}
+        </div>
+      </div>
+    )
+  })
+  return <div>{reviewFields}</div>
 }
 
 function mapStateToProps(state) {
