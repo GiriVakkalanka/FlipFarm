@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FormField from './FormField';
+import { Link } from 'react-router-dom'
 import _ from 'lodash';
 import {reduxForm, Field} from 'redux-form';
 
@@ -26,8 +27,11 @@ class ItemForm extends Component {
   render(){
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit(() => this.props.onItemSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.props.onItemSubmit)}>
           {this.renderFields()}
+          <Link to="/">
+            <button>Cancel</button>
+          </Link>
           <button type="submit">Next</button>
         </form>
       </div>

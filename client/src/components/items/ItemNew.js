@@ -9,13 +9,13 @@ class ItemNew extends Component {
     if (this.state.showFormReview) {
       return (
         <ItemReview
-          onCancel= {() => this.setState({ showFormReview: false })}
+          onCancel={() => this.setState({ showFormReview: false })}
         />
       );
     }
     return (
       <ItemForm
-        onItemSubmit= {() => this.setState({ showFormReview: true })}
+        onItemSubmit={() => this.setState({ showFormReview: true })}
       />
     );
   }
@@ -24,8 +24,7 @@ class ItemNew extends Component {
     return (
       <div>
         Item New
-        <ItemForm/>
-        <ItemReview/>
+        {this.renderNewItemWizard()}
       </div>
     )
   }
