@@ -7,8 +7,8 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import ItemNew from './items/ItemNew';
+import MarketplacePage from './marketplace/MarketplacePage';
 
-const MarketplacePage = () => <div>Marketplace Page</div>
 const UserProfilePage = () => <div>User Profile Page</div>
 const BrowseProfilePage = () => <div>Browse Profile Page</div>
 const TransactionPage = () => <div>Transaction Page</div>
