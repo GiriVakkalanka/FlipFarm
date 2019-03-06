@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 const ItemReview = ({ onCancel, formValues }) => {
   const reviewFields = _.map(ItemFormFields, ({ name, label }) => {
     return (
-      <div>
+      <div key={label}>
         <label>
           {label}
         </label>
@@ -17,7 +17,14 @@ const ItemReview = ({ onCancel, formValues }) => {
       </div>
     )
   })
-  return <div>{reviewFields}</div>
+  return (
+    <div>
+    {reviewFields}
+    <button onClick={onCancel}>
+      Cancel
+    </button>
+    </div>
+  )
 }
 
 function mapStateToProps(state) {

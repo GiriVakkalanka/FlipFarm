@@ -7,11 +7,19 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import ItemNew from './items/ItemNew';
+
+const MarketplacePage = () => <div>Marketplace Page</div>
+const UserProfilePage = () => <div>User Profile Page</div>
+const BrowseProfilePage = () => <div>Browse Profile Page</div>
+const TransactionPage = () => <div>Transaction Page</div>
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
+
   render() {
+
     return (
       <div>
         <BrowserRouter>
@@ -20,7 +28,11 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/surveys" component={Dashboard} />
             <Route path="/surveys/new" component={SurveyNew} />
-            <Route path="/items/new" component={ItemNew}/>
+            <Route path="/items/new" component={ItemNew} />
+            <Route path="/marketplace" component={MarketplacePage} />
+            <Route path="/profile" component={UserProfilePage} />
+            <Route path="/browse" component={BrowseProfilePage} />
+            <Route path="/transaction" component={TransactionPage} />
           </div>
         </BrowserRouter>
       </div>
