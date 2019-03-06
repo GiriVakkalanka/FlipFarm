@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
-const Offer = mongoose.model('Offer');
+//const Offer = mongoose.model('Offer');
 const requireLogin = require('../middlewares/requireLogin');
 const axios = require('axios');
 
@@ -16,7 +16,9 @@ module.exports = app => {
   });
 
   app.post('/api/add_item', requireLogin, async (req, res) => {
+
     const { name, description } = req.body;
+    console.log(req.body);
 
     const item = new Item({
       _user: req.user.id,
@@ -24,6 +26,8 @@ module.exports = app => {
       description,
       dateCreated: Date.now()
     });
+
+    //console.log(item);
 
     try {
       await item.save();
