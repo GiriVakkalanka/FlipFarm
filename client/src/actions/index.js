@@ -21,7 +21,7 @@ export const submitSurvey = (values, history) => async dispatch => {
 
 export const submitItem = (values) => async dispatch => {
   const res = await axios.post('/api/add_item', values);
-  console.log(res);
+  //console.log(res);
 
   dispatch({ type: SUBMIT_ITEM, payload: res.data });
 }

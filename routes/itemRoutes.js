@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Item = mongoose.model('Item');
+const User = mongoose.model('users');
 //const Offer = mongoose.model('Offer');
 const requireLogin = require('../middlewares/requireLogin');
 const axios = require('axios');
@@ -18,7 +19,7 @@ module.exports = app => {
   app.post('/api/add_item', requireLogin, async (req, res) => {
 
     const { name, description } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     const item = new Item({
       _user: req.user.id,
@@ -27,11 +28,21 @@ module.exports = app => {
       dateCreated: Date.now()
     });
 
-    //console.log(item);
+    //console.log('item is', item._doc);
+    const updatedUser = await User.findOne({_id: req.user.id })
+    //console.log('to be updated user is', updatedUser._doc);
+    updatedUser.inventory.push(item);
+
+    //console.log('updated user is', updatedUser);
+    //console.log('updated user', updatedUser);
+
 
     try {
       await item.save();
-      res.send(item);
+      await updatedUser.save();
+      //await updatedUser.save();
+      //console.log(updatedUser);
+      res.send(updatedUser);
     } catch (err) {
       res.status(400).send(err);
     }

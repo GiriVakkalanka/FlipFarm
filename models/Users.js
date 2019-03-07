@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 //const Schema = mongoose.Schema
 const { Schema } = mongoose;
+const itemSchema = require('./Item');
 
 const userSchema = new Schema({
   googleId: String,
@@ -9,7 +10,8 @@ const userSchema = new Schema({
   addressTwo: String,
   city: String,
   state: String,
-  zip: String
-});
+  zip: String,
+  inventory: [itemSchema]
+}, {usePushEach: true});
 
 mongoose.model('users', userSchema);
