@@ -8,6 +8,7 @@ const axios = require('axios');
 module.exports = app => {
   app.get('/api/get_available_items', async (req, res) => {
     const items = await Item.find({});
+    console.log('items from mongodb' + items);
     res.send(items);
   });
 
