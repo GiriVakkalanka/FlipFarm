@@ -1,16 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ItemCard = ({itemTitle, itemDescription}) => {
+const ItemCard = ({id, itemTitle, itemDescription}) => {
   return (
     <div>
       <h1>
-        {itemTitle}
+        {itemTitle || 'null'}
       </h1>
       <p>
-        {itemDescription}
+        {itemDescription || 'null'}
       </p>
+      <Link to={`/item/${id}`}>
+        <button>
+          See More
+        </button>
+      </Link>
     </div>
   )
 }
 
-export default ItemCard; 
+export default ItemCard;

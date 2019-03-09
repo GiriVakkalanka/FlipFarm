@@ -8,6 +8,7 @@ import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import ItemNew from './items/ItemNew';
 import MarketplacePage from './marketplace/MarketplacePage';
+import ItemPage from './items/ItemPage';
 
 const UserProfilePage = () => <div>User Profile Page</div>
 const BrowseProfilePage = () => <div>Browse Profile Page</div>
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/profile" component={UserProfilePage} />
             <Route path="/browse" component={BrowseProfilePage} />
             <Route path="/transaction" component={TransactionPage} />
+            <Route path="/item/:itemId" component={ItemPage} />
           </div>
         </BrowserRouter>
       </div>
