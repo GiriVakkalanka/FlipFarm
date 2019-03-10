@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../actions/index';
 
 class ItemPage extends Component {
+  renderPage(){
+    const { itemPage } = this.props;
+    //console.log(itemPage);
+    return (
+      <div>
+        <h1>{itemPage.itemTitle}</h1>
+        <p>{itemPage.itemDescription}</p>
+      </div>
+    )
+  }
+
   render(){
-    return <div>ItemPage</div>
+    return <div>{this.renderPage()}</div>;
   }
 }
 
-export default ItemPage;
+function mapStateToProps(state){
+  return {itemPage: state.itemPage}
+}
+
+export default connect(mapStateToProps, actions)(ItemPage);

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, SUBMIT_ITEM, GET_ALL_ITEMS } from './types';
+import { FETCH_USER, SUBMIT_ITEM, GET_ALL_ITEMS, LOAD_ITEM_PAGE } from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -30,3 +30,7 @@ export const getAllItems = () => async dispatch => {
   const res = await axios.get('/api/get_available_items');
   dispatch({ type: GET_ALL_ITEMS, payload: res.data});
 };
+
+export const loadItemPage = pageInfo => {
+  return { type: LOAD_ITEM_PAGE, payload: pageInfo};
+}

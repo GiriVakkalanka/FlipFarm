@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import { reducer as reduxForm } from 'redux-form';
 import authReducer from './authReducer';
 import itemReducer from './itemReducer';
+import itemPageReducer from './itemPageReducer';
 
 export default combineReducers({
   auth: authReducer,
   form: reduxForm,
-  items: itemReducer 
+  items: itemReducer,
+  itemPage: itemPageReducer
 });

@@ -32,7 +32,7 @@ const ItemReview = ({ onCancel, formValues, submitItem }) => {
 }
 
 function mapStateToProps(state) {
-  return { formValues: state.form.itemForm.values}
+  return {formValues: state.form.itemForm.values}
 }
 
 export default connect(mapStateToProps, actions)(withRouter(ItemReview));

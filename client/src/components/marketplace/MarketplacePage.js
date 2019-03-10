@@ -11,7 +11,7 @@ class MarketplacePage extends Component {
   }
 
   renderItemsList() {
-    const { items } = this.props;
+    const { items, loadItemPage } = this.props;
     return _.map(items, (item) => {
       return (
         <ItemCard
@@ -19,9 +19,10 @@ class MarketplacePage extends Component {
           id={item._id}
           itemTitle = {item.name}
           itemDescription = {item.description}
+          loadItemPage = {loadItemPage}
         />
-      )
-    })
+      );
+    });
   }
 
   render(){
