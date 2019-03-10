@@ -13,7 +13,7 @@ const ItemCard = ({id, itemTitle, itemDescription, loadItemPage}) => {
         {itemDescription || 'null'}
       </p>
       <Link to={`/item/${id}`}>
-        <button onClick={() => loadItemPage(pageInfo)}>
+        <button onClick={() => pageInfo ? loadItemPage(pageInfo): console.log('fix later')} >
           See More
         </button>
       </Link>

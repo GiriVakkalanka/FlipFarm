@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ItemInventory from './ItemInventory';
 import * as actions from '../../actions/index';
 
 class ItemPage extends Component {
@@ -10,6 +11,7 @@ class ItemPage extends Component {
       <div>
         <h1>{itemPage.itemTitle}</h1>
         <p>{itemPage.itemDescription}</p>
+        <ItemInventory/>
       </div>
     )
   }
