@@ -5,7 +5,12 @@ import * as actions from '../../actions/index';
 import ItemCard from './ItemCard';
 
 const ItemInventory = ({ user }) => {
+  console.log(user);
+
   const renderInventory = () => {
+    if(!user) {
+      return <div>Nothing to see here</div>
+    }
     return _.map(user.inventory, item => {
       return (
         <ItemCard

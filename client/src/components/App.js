@@ -9,8 +9,9 @@ import SurveyNew from './surveys/SurveyNew';
 import ItemNew from './items/ItemNew';
 import MarketplacePage from './marketplace/MarketplacePage';
 import ItemPage from './items/ItemPage';
+import UserProfilePage from './profile/UserProfilePage';
+import ItemInventory from './items/ItemInventory';
 
-const UserProfilePage = () => <div>User Profile Page</div>
 const BrowseProfilePage = () => <div>Browse Profile Page</div>
 const TransactionPage = () => <div>Transaction Page</div>
 
@@ -35,6 +36,7 @@ class App extends Component {
             <Route path="/browse" component={BrowseProfilePage} />
             <Route path="/transaction" component={TransactionPage} />
             <Route path="/item/:itemId" component={ItemPage} />
+            <Route path="/inventory" component={ItemInventory}/>
           </div>
         </BrowserRouter>
       </div>
