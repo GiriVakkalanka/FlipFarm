@@ -13,7 +13,8 @@ const ItemInventory = ({ user }) => {
           id={item._id}
           itemTitle = {item.name}
           itemDescription = {item.description}
-
+          cardButtonAction = {() => console.log('offer this item')}
+          cardButtonLabel = "Offer Item"
         />
       )
     })

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItemCard = ({id, itemTitle, itemDescription, loadItemPage}) => {
+const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonLabel}) => {
   const pageInfo = {id, itemTitle, itemDescription};
   //console.log(pageInfo);
   return (
@@ -13,8 +13,8 @@ const ItemCard = ({id, itemTitle, itemDescription, loadItemPage}) => {
         {itemDescription || 'null'}
       </p>
       <Link to={`/item/${id}`}>
-        <button onClick={() => pageInfo ? loadItemPage(pageInfo): console.log('fix later')} >
-          See More
+        <button onClick={() => cardButtonAction(pageInfo)} >
+          {cardButtonLabel}
         </button>
       </Link>
     </div>

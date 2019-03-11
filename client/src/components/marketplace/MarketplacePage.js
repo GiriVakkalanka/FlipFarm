@@ -19,7 +19,8 @@ class MarketplacePage extends Component {
           id={item._id}
           itemTitle = {item.name}
           itemDescription = {item.description}
-          loadItemPage = {loadItemPage}
+          cardButtonAction = {loadItemPage}
+          cardButtonLabel= "See More"
         />
       );
     });
