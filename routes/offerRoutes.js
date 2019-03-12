@@ -8,7 +8,7 @@ const Offer = mongoose.model('Offer');
 
 module.exports = app => {
   app.post('/api/submit_offer', requireLogin, async (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const { itemWanted, itemOffered } = req.body;
     const wantedItem = await Item.findOne({_id: itemWanted});
     offerTo = wantedItem._user
@@ -19,8 +19,15 @@ module.exports = app => {
       offerTo: wantedItem._user,
       offerDate: Date.now()
     });
-    console.log(offer)
+    console.log(offer._doc)
     res.send(offer) ;
+    // const submittedOfferItems = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
+    // console.log(JSON.stringify(submittedOfferItems));
+    //res.send('hi');
+  });
+
+  app.get('/api/get_submitted_offers', requireLogin, async () => {
+    //const submittedOffers = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
   });
 }
 
