@@ -11,11 +11,11 @@ const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonL
   };
 
   const renderButton = () => {
-    
+
     switch (type) {
       case 'profileInventory':
         return (
-          <button onClick={() => cardButtonAction(pageInfo)} >
+          <button onClick={() => console.log('edit')} >
             {cardButtonLabel}
           </button>
         );
