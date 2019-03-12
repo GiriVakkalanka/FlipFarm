@@ -4,8 +4,29 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import ItemCard from './ItemCard';
 
-const ItemInventory = ({ user }) => {
-  console.log(user);
+const ItemInventory = ({ user, location, submitOffer }) => {
+
+  const determineAction = () => {
+    switch (location) {
+      case 'itemPage':
+        return submitOffer;
+      case 'profilePage':
+        return console.log('profilePage');
+      default:
+        return
+    }
+  }
+
+  const determineLabel = () => {
+    switch (location) {
+      case 'itemPage':
+        return 'Offer Item';
+      case 'profilePage':
+        return 'Edit Item';
+      default:
+        return 'Label';
+    }
+  }
 
   const renderInventory = () => {
     if(!user) {
@@ -18,8 +39,9 @@ const ItemInventory = ({ user }) => {
           id={item._id}
           itemTitle = {item.name}
           itemDescription = {item.description}
-          cardButtonAction = {() => console.log('offer this item')}
-          cardButtonLabel = "Offer Item"
+          cardButtonAction = {determineAction()}
+          cardButtonLabel = {determineLabel()}
+          type = "profileInventory"
         />
       )
     })

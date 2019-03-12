@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 require('./models/Users');
 require('./models/Survey');
 require('./models/Item');
+require('./models/Offer');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -28,6 +29,7 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
 require('./routes/itemRoutes')(app);
+require('./routes/offerRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

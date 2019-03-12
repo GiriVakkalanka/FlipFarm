@@ -11,7 +11,7 @@ class ItemPage extends Component {
       <div>
         <h1>{itemPage.itemTitle}</h1>
         <p>{itemPage.itemDescription}</p>
-        <ItemInventory/>
+        <ItemInventory location="itemPage"/>
       </div>
     )
   }

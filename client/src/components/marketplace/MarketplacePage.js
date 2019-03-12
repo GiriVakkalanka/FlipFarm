@@ -21,6 +21,7 @@ class MarketplacePage extends Component {
           itemDescription = {item.description}
           cardButtonAction = {loadItemPage}
           cardButtonLabel= "See More"
+          type = "marketplace"
         />
       );
     });

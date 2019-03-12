@@ -9,7 +9,7 @@ const UserProfilePage = () => {
       </div>
       <br/>
       <br/>
-      <ItemInventory/>
+      <ItemInventory location="profilePage"/>
     </div>
   )
 }
