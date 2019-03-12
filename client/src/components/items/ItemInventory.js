@@ -28,6 +28,8 @@ const ItemInventory = ({ user, location, submitOffer }) => {
     }
   }
 
+
+
   const renderInventory = () => {
     if(!user) {
       return <div>Nothing to see here</div>
@@ -41,7 +43,7 @@ const ItemInventory = ({ user, location, submitOffer }) => {
           itemDescription = {item.description}
           cardButtonAction = {determineAction()}
           cardButtonLabel = {determineLabel()}
-          type = "profileInventory"
+          location = {location}
         />
       )
     })

@@ -1,26 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonLabel, type}) => {
+const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonLabel, location}) => {
 
   const pageInfo = {id, itemTitle, itemDescription};
 
   const offer = {
-    cardButtonLabel,
-    type
+    'hi':'hi'
   };
-
+  console.log(location);
   const renderButton = () => {
 
-    switch (type) {
-      case 'profileInventory':
+    switch (location) {
+      case 'profilePage':
         return (
           <button onClick={() => console.log('edit')} >
             {cardButtonLabel}
           </button>
         );
 
-      case 'marketplace':
+      case 'itemPage':
+        return (
+          <button onClick={() => cardButtonAction(offer)}>
+            {cardButtonLabel}
+          </button>
+        );
+      default:
         return (
           <Link to={`/item/${id}`}>
             <button onClick={() => cardButtonAction(pageInfo)} >
@@ -28,17 +33,6 @@ const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonL
             </button>
           </Link>
         );
-
-      case 'offerInventory':
-
-        return (
-          <button onClick={() => cardButtonAction(offer)}>
-            {cardButtonLabel}
-          </button>
-        );
-      default:
-        return;
-
     }
   }
   return (
