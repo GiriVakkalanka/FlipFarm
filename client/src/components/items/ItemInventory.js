@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import ItemCard from './ItemCard';
 
-const ItemInventory = ({ user, location, submitOffer }) => {
+const ItemInventory = ({ user, location, submitOffer, itemWanted }) => {
 
   const determineAction = () => {
     switch (location) {
@@ -28,8 +28,6 @@ const ItemInventory = ({ user, location, submitOffer }) => {
     }
   }
 
-
-
   const renderInventory = () => {
     if(!user) {
       return <div>Nothing to see here</div>
@@ -44,6 +42,7 @@ const ItemInventory = ({ user, location, submitOffer }) => {
           cardButtonAction = {determineAction()}
           cardButtonLabel = {determineLabel()}
           location = {location}
+          itemWanted={itemWanted}
         />
       )
     })

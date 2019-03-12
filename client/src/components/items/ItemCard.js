@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonLabel, location}) => {
+const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonLabel, location, itemWanted}) => {
 
   const pageInfo = {id, itemTitle, itemDescription};
 
+
   const offer = {
-    'hi':'hi'
+    itemWanted,
+    itemOffered: id
   };
-  console.log(location);
+
+  //console.log(location);
   const renderButton = () => {
 
     switch (location) {
@@ -25,6 +28,7 @@ const ItemCard = ({id, itemTitle, itemDescription, cardButtonAction, cardButtonL
             {cardButtonLabel}
           </button>
         );
+
       default:
         return (
           <Link to={`/item/${id}`}>

@@ -6,12 +6,15 @@ import * as actions from '../../actions/index';
 class ItemPage extends Component {
   renderPage(){
     const { itemPage } = this.props;
-    //console.log(itemPage);
+    //console.log('item wanted' + itemPage.id);
     return (
       <div>
         <h1>{itemPage.itemTitle}</h1>
         <p>{itemPage.itemDescription}</p>
-        <ItemInventory location="itemPage"/>
+        <ItemInventory
+          location="itemPage"
+          itemWanted={itemPage.id}
+        />
       </div>
     )
   }
