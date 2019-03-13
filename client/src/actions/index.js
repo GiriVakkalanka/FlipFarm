@@ -5,7 +5,9 @@ import {
   GET_ALL_ITEMS,
   LOAD_ITEM_PAGE,
   SUBMIT_OFFER,
-  GET_INBOX } from './types';
+  GET_INBOX,
+  ACCEPT_OFFER
+} from './types';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
@@ -42,13 +44,18 @@ export const submitOffer = (offer) => async dispatch => {
   //console.log('offer is ' + JSON.stringify(offer));
   const res = await axios.post('/api/submit_offer', offer);
   dispatch({ type: SUBMIT_OFFER, payload: res.data })
-}
+};
 
 export const loadItemPage = pageInfo => {
   return { type: LOAD_ITEM_PAGE, payload: pageInfo};
-}
+};
 
 export const getInbox = () => async dispatch => {
   const res = await axios.get('/api/get_offer_inbox');
   dispatch({type: GET_INBOX, payload: res.data});
-}
+};
+
+export const acceptOffer = (offer) => async dispatch => {
+  const res = await axios.post('/api/accept_offer', offer);
+  dispatch({type: ACCEPT_OFFER, payload: res.data});
+};

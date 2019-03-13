@@ -10,8 +10,10 @@ class UserProfilePage extends Component {
     this.props.getInbox();
   }
 
+
   render(){
     const { inbox } = this.props;
+    console.log(inbox);
     return (
       <div>
         <div>
@@ -20,7 +22,10 @@ class UserProfilePage extends Component {
         <br/>
         <br/>
         <ItemInventory location="profilePage"/>
-        <OfferInbox offerList={inbox}/>
+        <OfferInbox
+          offerList={inbox}
+          acceptAction={this.props.acceptOffer}
+        />
       </div>
     );
   }
