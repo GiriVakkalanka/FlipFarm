@@ -19,7 +19,8 @@ module.exports = app => {
       offerTo: wantedItem._user,
       offerDate: Date.now()
     });
-    console.log(offer._doc)
+    offer.save();
+    //console.log(offer._doc)
     res.send(offer) ;
     // const submittedOfferItems = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
     // console.log(JSON.stringify(submittedOfferItems));

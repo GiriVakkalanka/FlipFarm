@@ -1,17 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/index';
 import ItemInventory from '../items/ItemInventory';
 
-const UserProfilePage = () => {
-  return (
-    <div>
+class UserProfilePage extends Component {
+
+  render(){
+    return (
       <div>
-        Profile Page
+        <div>
+          Profile Page
+        </div>
+        <br/>
+        <br/>
+        <ItemInventory location="profilePage"/>
       </div>
-      <br/>
-      <br/>
-      <ItemInventory location="profilePage"/>
-    </div>
-  )
+    );
+  }
 }
 
-export default UserProfilePage;
+function mapStateToProps(state){
+  return {auth: state.auth};
+}
+
+export default connect(mapStateToProps, actions)(UserProfilePage);
