@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import ItemInventory from '../items/ItemInventory';
 import OfferInbox from './OfferInbox';
+import OfferOutbox from './OfferOutbox';
 
 class UserProfilePage extends Component {
 
   componentDidMount(){
     this.props.getInbox();
   }
-
 
   render(){
     const { inbox } = this.props;
@@ -26,6 +26,7 @@ class UserProfilePage extends Component {
           offerList={inbox}
           acceptAction={this.props.acceptOffer}
         />
+        <OfferOutbox />
       </div>
     );
   }

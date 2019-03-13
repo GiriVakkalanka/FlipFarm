@@ -28,9 +28,9 @@ module.exports = app => {
   });
 
   app.get('/api/get_offer_inbox', requireLogin, async (req, res) => {
-    const receivedInbox = await Offer.find({offerTo: req.user.id, offerAccepted:false}).populate('offerFrom').populate('itemOffered').populate('itemWanted');
+    const inbox = await Offer.find({offerTo: req.user.id, offerAccepted:false}).populate('offerFrom').populate('itemOffered').populate('itemWanted');
     //console.log(receivedInbox);
-    res.send(receivedInbox);
+    res.send(inbox);
   });
 
   app.post('/api/accept_offer', requireLogin, async (req, res) => {
@@ -40,6 +40,12 @@ module.exports = app => {
 
     res.send(newInbox);
   });
+
+  app.post('/api/get_offer_outbox', requireLogin, async (req, res) => {
+    const outbox = await Offer.find({offerFrom: req.user.id, offerAccepted:false}).populate('offerTo').populate('itemOffered').populate('itemWanted');
+    res.send(outbox);
+  })
+
 }
 
 
