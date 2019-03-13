@@ -11,7 +11,7 @@ const ItemInventory = ({ user, location, submitOffer, itemWanted }) => {
       case 'itemPage':
         return submitOffer;
       case 'profilePage':
-        return console.log('profilePage');
+        //return console.log('profilePage');
       default:
         return
     }
