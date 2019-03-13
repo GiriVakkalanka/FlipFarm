@@ -27,7 +27,7 @@ module.exports = app => {
     //res.send('hi');
   });
 
-  app.get('/api/get_submitted_offers', requireLogin, async () => {
+  app.get('/api/get_offer_inbox', requireLogin, async () => {
     //const submittedOffers = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
   });
 }
