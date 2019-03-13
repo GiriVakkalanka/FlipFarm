@@ -39,7 +39,7 @@ export const getAllItems = () => async dispatch => {
 
 export const submitOffer = (offer) => async dispatch => {
   console.log('submit offer called')
-  console.log('offer is ' + JSON.stringify(offer));
+  //console.log('offer is ' + JSON.stringify(offer));
   const res = await axios.post('/api/submit_offer', offer);
   dispatch({ type: SUBMIT_OFFER, payload: res.data })
 }

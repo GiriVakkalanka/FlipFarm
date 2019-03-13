@@ -11,17 +11,15 @@ const testObj = {
   'testKey4' : 'testValue4'
 }
 
-
 class UserProfilePage extends Component {
 
   componentDidMount(){
     this.props.getInbox();
-
   }
 
   render(){
     const { inbox } = this.props;
-    console.log('inbox ' + JSON.stringify(inbox));
+    console.log(inbox);
     return (
       <div>
         <div>

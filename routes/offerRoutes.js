@@ -28,9 +28,9 @@ module.exports = app => {
   });
 
   app.get('/api/get_offer_inbox', requireLogin, async (req, res) => {
-    //const submittedOffers = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
-    console.log('inbox route called');
-    res.send({'hi': 'hi'});
+    const receivedInbox = await Offer.find({offerTo: req.user.id}).populate('offerFrom').populate('offerTo').populate('itemOffered').populate('itemWanted');
+    //console.log(receivedInbox);
+    res.send(receivedInbox);
   });
 }
 

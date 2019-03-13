@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const offerSchema = new Schema({
-  offerFrom: { type: Schema.Types.ObjectId, ref: 'User' },
-  offerTo: { type: Schema.Types.ObjectId, ref: 'User'},
+  offerFrom: { type: Schema.Types.ObjectId, ref: 'users' },
+  offerTo: { type: Schema.Types.ObjectId, ref: 'users'},
   itemOffered: { type: Schema.Types.ObjectId, ref: 'Item'},
   itemWanted: { type: Schema.Types.ObjectId, ref: 'Item'},
   offerDate: Date,
