@@ -4,13 +4,6 @@ import * as actions from '../../actions/index';
 import ItemInventory from '../items/ItemInventory';
 import OfferInbox from './OfferInbox';
 
-const testObj = {
-  'testKey' : 'testValue',
-  'testKey2' : 'testValue2',
-  'testKey3' : 'testValue3',
-  'testKey4' : 'testValue4'
-}
-
 class UserProfilePage extends Component {
 
   componentDidMount(){
@@ -19,7 +12,6 @@ class UserProfilePage extends Component {
 
   render(){
     const { inbox } = this.props;
-    console.log(inbox);
     return (
       <div>
         <div>
@@ -28,7 +20,7 @@ class UserProfilePage extends Component {
         <br/>
         <br/>
         <ItemInventory location="profilePage"/>
-        <OfferInbox offerList={testObj}/>
+        <OfferInbox offerList={inbox}/>
       </div>
     );
   }
