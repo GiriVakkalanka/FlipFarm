@@ -4,4 +4,5 @@ export const GET_ALL_ITEMS = 'get_all_items';
 export const LOAD_ITEM_PAGE = 'load_item_page';
 export const SUBMIT_OFFER = 'submit_offer';
 export const GET_INBOX = 'get_inbox';
+export const GET_OUTBOX = 'get_outbox';
 export const ACCEPT_OFFER = 'accept_offer';

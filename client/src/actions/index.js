@@ -6,7 +6,8 @@ import {
   LOAD_ITEM_PAGE,
   SUBMIT_OFFER,
   GET_INBOX,
-  ACCEPT_OFFER
+  ACCEPT_OFFER,
+  GET_OUTBOX
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -54,6 +55,11 @@ export const getInbox = () => async dispatch => {
   const res = await axios.get('/api/get_offer_inbox');
   dispatch({type: GET_INBOX, payload: res.data});
 };
+
+export const getOutbox = () => async dispatch => {
+  const res = await axios.get('/api/get_offer_outbox');
+  dispatch({type: GET_OUTBOX, payload: res.data});
+}
 
 export const acceptOffer = (offer) => async dispatch => {
   const res = await axios.post('/api/accept_offer', offer);

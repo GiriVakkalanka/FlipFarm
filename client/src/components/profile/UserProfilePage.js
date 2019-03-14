@@ -9,10 +9,11 @@ class UserProfilePage extends Component {
 
   componentDidMount(){
     this.props.getInbox();
+    this.props.getOutbox();
   }
 
   render(){
-    const { inbox } = this.props;
+    const { inbox, outbox } = this.props;
     console.log(inbox);
     return (
       <div>
@@ -26,7 +27,9 @@ class UserProfilePage extends Component {
           offerList={inbox}
           acceptAction={this.props.acceptOffer}
         />
-        <OfferOutbox />
+        <OfferOutbox
+          offerList={outbox}
+        />
       </div>
     );
   }
@@ -35,7 +38,8 @@ class UserProfilePage extends Component {
 function mapStateToProps(state){
   return {
     auth: state.auth,
-    inbox: state.inbox
+    inbox: state.inbox,
+    outbox: state.outbox
   };
 }
 
