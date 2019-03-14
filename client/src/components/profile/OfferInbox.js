@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-
+//ADD ITEM WANTED
 const OfferInbox = ({offerList, acceptAction}) => {
   const renderInbox = () => {
     return _.map(offerList, offer => {

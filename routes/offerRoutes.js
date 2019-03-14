@@ -41,8 +41,9 @@ module.exports = app => {
     res.send(newInbox);
   });
 
-  app.post('/api/get_offer_outbox', requireLogin, async (req, res) => {
+  app.get('/api/get_offer_outbox', requireLogin, async (req, res) => {
     const outbox = await Offer.find({offerFrom: req.user.id, offerAccepted:false}).populate('offerTo').populate('itemOffered').populate('itemWanted');
+    console.log(outbox);
     res.send(outbox);
   })
 

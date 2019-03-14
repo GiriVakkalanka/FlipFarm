@@ -57,6 +57,7 @@ export const getInbox = () => async dispatch => {
 };
 
 export const getOutbox = () => async dispatch => {
+  console.log('outbox called');
   const res = await axios.get('/api/get_offer_outbox');
   dispatch({type: GET_OUTBOX, payload: res.data});
 }
