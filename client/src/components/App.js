@@ -11,9 +11,10 @@ import MarketplacePage from './marketplace/MarketplacePage';
 import ItemPage from './items/ItemPage';
 import UserProfilePage from './profile/UserProfilePage';
 import ItemInventory from './items/ItemInventory';
+import TransactionPage from './transaction/TransactionPage';
 
 const BrowseProfilePage = () => <div>Browse Profile Page</div>
-const TransactionPage = () => <div>Transaction Page</div>
+//const TransactionPage = () => <div>Transaction Page</div>
 
 class App extends Component {
   componentDidMount() {
