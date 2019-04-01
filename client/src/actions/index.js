@@ -64,5 +64,6 @@ export const getOutbox = () => async dispatch => {
 
 export const acceptOffer = (offer) => async dispatch => {
   const res = await axios.post('/api/accept_offer', offer);
+  //const transaction = await axios.post('/api/start_transaction', offer);
   dispatch({type: ACCEPT_OFFER, payload: res.data});
 };

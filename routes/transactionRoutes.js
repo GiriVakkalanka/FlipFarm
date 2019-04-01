@@ -7,7 +7,8 @@ const requireLogin = require('../middlewares/requireLogin');
 const axios = require('axios');
 
 module.exports = app => {
-    app.get('/api/start_transaction', requireLogin, async (req, res) => {
+    app.post('/api/start_transaction', requireLogin, async (req, res) => {
+      console.log(req.body);
 	    res.send('hi');
     });
 }

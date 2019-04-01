@@ -5,6 +5,7 @@ const requireLogin = require('../middlewares/requireLogin');
 const Item = mongoose.model('Item');
 const User = mongoose.model('users');
 const Offer = mongoose.model('Offer');
+const Transaction = mongoose.model('Transaction');
 
 module.exports = app => {
   app.post('/api/submit_offer', requireLogin, async (req, res) => {
@@ -37,6 +38,13 @@ module.exports = app => {
     //console.log(req.body);
     const acceptedOffer = await Offer.findOneAndUpdate({_id: req.body.offerId}, {offerAccepted:true});
     const newInbox = await Offer.find({offerTo: req.user.id, offerAccepted:false}).populate('offerFrom').populate('itemOffered').populate('itemWanted');
+    const offer = await Offer.findOne({_id: req.body.offerId});
+    const transaction = new Transaction({
+      startDate: Date.now(),
+      acceptedOffer: offer
+    });
+    transaction.save();
+    console.log(transaction);
 
     res.send(newInbox);
   });
