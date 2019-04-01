@@ -8,6 +8,7 @@ require('./models/Users');
 require('./models/Survey');
 require('./models/Item');
 require('./models/Offer');
+require('./models/Transaction');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
