@@ -12,7 +12,7 @@ module.exports = app => {
       const offeredTransactions = await Transaction.find({offerUser:req.user.id});
       const acceptedTransactions = await Transaction.find({acceptUser:req.user.id});
       const transactions = {offeredTransactions, acceptedTransactions}
-      console.log(transactions);
+      //console.log(transactions);
 	    res.send(transactions);
     });
 }

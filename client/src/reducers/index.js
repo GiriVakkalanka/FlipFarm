@@ -5,6 +5,7 @@ import itemReducer from './itemReducer';
 import itemPageReducer from './itemPageReducer';
 import inboxReducer from './inboxReducer';
 import outboxReducer from './outboxReducer';
+import transactionReducer from './transactionReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   items: itemReducer,
   itemPage: itemPageReducer,
   inbox: inboxReducer,
-  outbox: outboxReducer
+  outbox: outboxReducer,
+  transactions: transactionReducer
 });
