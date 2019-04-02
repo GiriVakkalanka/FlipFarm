@@ -4,16 +4,18 @@ import * as actions from '../../actions/index';
 import ItemInventory from '../items/ItemInventory';
 import OfferInbox from './OfferInbox';
 import OfferOutbox from './OfferOutbox';
+import TransactionList from '../transaction/TransactionList';
 
 class UserProfilePage extends Component {
 
   componentDidMount(){
     this.props.getInbox();
     this.props.getOutbox();
+    this.props.getTransactions();
   }
 
   render(){
-    const { inbox, outbox } = this.props;
+    const { inbox, outbox, transactions } = this.props;
     console.log(inbox);
     return (
       <div>
@@ -30,6 +32,7 @@ class UserProfilePage extends Component {
         <OfferOutbox
           offerList={outbox}
         />
+        <TransactionList transactions={transactions}/>
       </div>
     );
   }
@@ -39,7 +42,8 @@ function mapStateToProps(state){
   return {
     auth: state.auth,
     inbox: state.inbox,
-    outbox: state.outbox
+    outbox: state.outbox,
+    transactions: state.transactions
   };
 }
 
