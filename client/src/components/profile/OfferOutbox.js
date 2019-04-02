@@ -4,7 +4,7 @@ import React from 'react';
 const OfferOutbox = ({offerList}) => {
   const renderOutbox = () => {
     return _.map(offerList, offer => {
-      const offerId = {offerId: offer._id};
+      //const offerId = {offerId: offer._id};
       return (
         <div key={offer._id}>
           <h3>Item Wanted</h3>

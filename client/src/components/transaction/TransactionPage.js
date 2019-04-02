@@ -9,9 +9,6 @@ import * as actions from '../../actions/index';
 //postmates scheduler
 //tracker
 
-const ConfirmInformation = () => {
-  return <div>Confirm Information</div>
-}
 
 class TransactionPage extends Component {
 
