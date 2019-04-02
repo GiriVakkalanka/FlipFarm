@@ -10,7 +10,16 @@ const transactionSchema = new Schema({
   acceptUser: {type: Schema.Types.ObjectId, ref: 'users'},
   transactionCompleted: { type: Boolean, default: false},
   transactionSuccess: { type: Boolean, default: false},
-  acceptedOffer: { type: Schema.Types.ObjectId, ref: 'Offer'}
+  acceptedOffer: { type: Schema.Types.ObjectId, ref: 'Offer'},
+  transactionStage: { type: String, enum: [
+    'infoPending',
+    'timeChoicesSent',
+    'dateChosen',
+    'dayOfTransaction',
+    'ongoingTransaction',
+    'transactionSuccess'
+  ], default: 'infoPending'},
+
 });
 
 mongoose.model('Transaction', transactionSchema);
