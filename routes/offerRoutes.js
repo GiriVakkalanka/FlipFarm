@@ -48,7 +48,13 @@ module.exports = app => {
       acceptedOffer: offer
     });
     transaction.save();
-    console.log(transaction);
+    //console.log(transaction);
+
+    const timeoutTest = () => {
+      console.log('timeout test')
+    }
+
+    setTimeout(timeoutTest, 90000);
 
     res.send(newInbox);
   });

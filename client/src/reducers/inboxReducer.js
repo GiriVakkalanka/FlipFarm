@@ -5,6 +5,8 @@ export default function (state=[], action) {
     case GET_INBOX:
       return action.payload;
     case ACCEPT_OFFER:
+      console.log('res arrived');
+      console.log(action.payload);
       return action.payload;
     default:
       return state;
