@@ -47,14 +47,28 @@ module.exports = app => {
       acceptUser:offer.offerTo,
       acceptedOffer: offer
     });
-    transaction.save();
+    savedTransaction = transaction.save();
     //console.log(transaction);
 
-    const timeoutTest = () => {
-      console.log('timeout test')
+    // const timeoutTest = () => {
+    //   console.log('timeout test')
+    // }
+
+    // setTimeout(timeoutTest, 90000);
+
+    const checkTimeChoicesSent = async () => {
+      const transactionToCheck = await Transaction.findOne({_id: savedTransaction._id});
+      if (transactionToCheck.transactionStage === 'infoPending') {
+        console.log('false');
+        return false;
+      } else if (transactionToCheck.transactionStage === 'timeChoicesSent') {
+        console.log('true');
+        return true;
+      }
+      return false;
     }
 
-    setTimeout(timeoutTest, 90000);
+    setTimeout(checkTimeChoicesSent, 120000);
 
     res.send(newInbox);
   });
