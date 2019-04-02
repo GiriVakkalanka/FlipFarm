@@ -6,3 +6,4 @@ export const SUBMIT_OFFER = 'submit_offer';
 export const GET_INBOX = 'get_inbox';
 export const GET_OUTBOX = 'get_outbox';
 export const ACCEPT_OFFER = 'accept_offer';
+export const GET_TRANSACTIONS = 'get_transactions';

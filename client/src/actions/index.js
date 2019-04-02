@@ -7,7 +7,8 @@ import {
   SUBMIT_OFFER,
   GET_INBOX,
   ACCEPT_OFFER,
-  GET_OUTBOX
+  GET_OUTBOX,
+  GET_TRANSACTIONS
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -67,3 +68,8 @@ export const acceptOffer = (offer) => async dispatch => {
   //const transaction = await axios.post('/api/start_transaction', offer);
   dispatch({type: ACCEPT_OFFER, payload: res.data});
 };
+
+export const getTransactions = () => async dispatch => {
+  const res = await axios.get('/api/get_transactions');
+  dispatch({type: GET_TRANSACTIONS, payload: res.data});
+}

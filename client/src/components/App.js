@@ -19,6 +19,7 @@ const BrowseProfilePage = () => <div>Browse Profile Page</div>
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    this.props.getTransactions();
   }
 
   render() {

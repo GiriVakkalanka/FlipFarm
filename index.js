@@ -31,6 +31,7 @@ require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
 require('./routes/itemRoutes')(app);
 require('./routes/offerRoutes')(app);
+require('./routes/transactionRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

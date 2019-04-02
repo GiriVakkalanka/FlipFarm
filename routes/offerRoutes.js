@@ -39,8 +39,12 @@ module.exports = app => {
     const acceptedOffer = await Offer.findOneAndUpdate({_id: req.body.offerId}, {offerAccepted:true});
     const newInbox = await Offer.find({offerTo: req.user.id, offerAccepted:false}).populate('offerFrom').populate('itemOffered').populate('itemWanted');
     const offer = await Offer.findOne({_id: req.body.offerId});
+    //const participants = await offer.populate('offerFrom').populate('offerTo');
+    //console.log('participants' + participants);
     const transaction = new Transaction({
       startDate: Date.now(),
+      offerUser:offer.offerFrom,
+      acceptUser:offer.offerTo,
       acceptedOffer: offer
     });
     transaction.save();
