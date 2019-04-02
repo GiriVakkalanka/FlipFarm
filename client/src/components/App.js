@@ -11,7 +11,7 @@ import MarketplacePage from './marketplace/MarketplacePage';
 import ItemPage from './items/ItemPage';
 import UserProfilePage from './profile/UserProfilePage';
 import ItemInventory from './items/ItemInventory';
-import TransactionPage from './transaction/TransactionPage';
+import TransactionBox from './transaction/TransactionBox';
 
 const BrowseProfilePage = () => <div>Browse Profile Page</div>
 //const TransactionPage = () => <div>Transaction Page</div>
@@ -36,7 +36,7 @@ class App extends Component {
             <Route path="/marketplace" component={MarketplacePage} />
             <Route path="/profile" component={UserProfilePage} />
             <Route path="/browse" component={BrowseProfilePage} />
-            <Route path="/transaction" component={TransactionPage} />
+            <Route path="/transaction" component={TransactionBox} />
             <Route path="/item/:itemId" component={ItemPage} />
             <Route path="/inventory" component={ItemInventory}/>
           </div>

@@ -10,7 +10,7 @@ import * as actions from '../../actions/index';
 //tracker
 
 
-class TransactionPage extends Component {
+class TransactionBox extends Component {
 
   componentDidMount(){
     this.props.getTransactions();
@@ -32,4 +32,14 @@ function mapStateToProps(state){
   return { transactions: state.transactions }
 }
 
-export default connect(mapStateToProps, actions)(TransactionPage);
+export default connect(mapStateToProps, actions)(TransactionBox);
+
+//Change TransactionPage to TransactionBox
+//Create button to go to individualTransaction TransactionPage
+//Create routes to go to individual TransactionPage
+//Make TransactionPage by creating reducer for current transaction page and actions to route to page.
+//create alternate user account to simulate making an offer
+//Create dummy button to simulate submission of date choices on acceptor side and
+//waiting for submission of chioces on offerer side
+//Create action creators to attach to dummy button
+//advance transaction from pen
