@@ -34,7 +34,6 @@ function mapStateToProps(state){
 
 export default connect(mapStateToProps, actions)(TransactionBox);
 
-//Change TransactionPage to TransactionBox
 //Create button to go to individualTransaction TransactionPage
 //Create routes to go to individual TransactionPage
 //Make TransactionPage by creating reducer for current transaction page and actions to route to page.
