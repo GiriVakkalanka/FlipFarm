@@ -37,7 +37,7 @@ class App extends Component {
             <Route path="/marketplace" component={MarketplacePage} />
             <Route path="/profile" component={UserProfilePage} />
             <Route path="/browse" component={BrowseProfilePage} />
-            <Route path="/transaction" component={TransactionBox} />
+            <Route path="/transactions" component={TransactionBox} />
             <Route path="/item/:itemId" component={ItemPage} />
             <Route path="/transaction/:transactionId" component={TransactionPage} />
             <Route path="/inventory" component={ItemInventory}/>

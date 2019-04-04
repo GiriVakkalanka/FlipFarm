@@ -17,13 +17,13 @@ class TransactionBox extends Component {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { transactions, loadTransactionPage } = this.props;
     const uniqueTransactions = [...new Set(transactions)];
     console.log(uniqueTransactions);
 
     //console.log(transactions);
     return (
-      <div><TransactionList transactions={uniqueTransactions}/></div>
+      <div><TransactionList loadTransactionPage={loadTransactionPage} transactions={uniqueTransactions}/></div>
     )
   }
 }

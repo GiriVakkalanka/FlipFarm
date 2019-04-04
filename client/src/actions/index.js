@@ -55,7 +55,7 @@ export const loadItemPage = pageInfo => {
 
 export const loadTransactionPage = pageInfo => {
   return { type: LOAD_TRANSACTION_PAGE, payload: pageInfo};
-}
+};
 
 export const getInbox = () => async dispatch => {
   const res = await axios.get('/api/get_offer_inbox');
@@ -66,7 +66,7 @@ export const getOutbox = () => async dispatch => {
   console.log('outbox called');
   const res = await axios.get('/api/get_offer_outbox');
   dispatch({type: GET_OUTBOX, payload: res.data});
-}
+};
 
 export const acceptOffer = (offer) => async dispatch => {
   const res = await axios.post('/api/accept_offer', offer);

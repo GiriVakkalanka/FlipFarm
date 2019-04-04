@@ -15,7 +15,7 @@ class UserProfilePage extends Component {
   }
 
   render(){
-    const { inbox, outbox, transactions } = this.props;
+    const { inbox, outbox, transactions, loadTransactionPage } = this.props;
     console.log(inbox);
     return (
       <div>
@@ -32,7 +32,7 @@ class UserProfilePage extends Component {
         <OfferOutbox
           offerList={outbox}
         />
-        <TransactionList transactions={transactions}/>
+        <TransactionList loadTransactionPage={loadTransactionPage} transactions={transactions}/>
       </div>
     );
   }
