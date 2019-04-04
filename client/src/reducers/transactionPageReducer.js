@@ -1,8 +1,8 @@
-import { LOAD_ITEM_PAGE } from '../actions/types';
+import { LOAD_TRANSACTION_PAGE } from '../actions/types';
 
 export default function(state = null, action) {
   switch (action.type) {
-    case LOAD_ITEM_PAGE:
+    case LOAD_TRANSACTION_PAGE:
       return action.payload;
     default:
       return state;

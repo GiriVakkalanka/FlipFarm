@@ -8,7 +8,8 @@ import {
   GET_INBOX,
   ACCEPT_OFFER,
   GET_OUTBOX,
-  GET_TRANSACTIONS
+  GET_TRANSACTIONS,
+  LOAD_TRANSACTION_PAGE
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -45,12 +46,16 @@ export const submitOffer = (offer) => async dispatch => {
   console.log('submit offer called')
   //console.log('offer is ' + JSON.stringify(offer));
   const res = await axios.post('/api/submit_offer', offer);
-  dispatch({ type: SUBMIT_OFFER, payload: res.data })
+  dispatch({ type: SUBMIT_OFFER, payload: res.data });
 };
 
 export const loadItemPage = pageInfo => {
   return { type: LOAD_ITEM_PAGE, payload: pageInfo};
 };
+
+export const loadTransactionPage = pageInfo => {
+  return { type: LOAD_TRANSACTION_PAGE, payload: pageInfo};
+}
 
 export const getInbox = () => async dispatch => {
   const res = await axios.get('/api/get_offer_inbox');

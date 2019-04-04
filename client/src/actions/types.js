@@ -7,3 +7,4 @@ export const GET_INBOX = 'get_inbox';
 export const GET_OUTBOX = 'get_outbox';
 export const ACCEPT_OFFER = 'accept_offer';
 export const GET_TRANSACTIONS = 'get_transactions';
+export const LOAD_TRANSACTION_PAGE = 'load_transaction_page';
