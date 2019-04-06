@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
+import DatePicker from '../datePicker/DatePicker';
 
 class TransactionPage extends Component {
   renderPage() {
@@ -10,9 +11,12 @@ class TransactionPage extends Component {
     return (
       <div>
         {transactionPage.acceptUser}
+        <br/>
         <button onClick={() => submitScheduleChoices(choice)}>
           submit
         </button>
+        <br/>
+        <DatePicker />
       </div>
     )
   }
@@ -24,7 +28,6 @@ class TransactionPage extends Component {
         <div>TransactionPage</div>
         <div>{this.renderPage()}</div>
       </div>
-
     )
   }
 }
