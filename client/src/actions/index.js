@@ -9,7 +9,8 @@ import {
   ACCEPT_OFFER,
   GET_OUTBOX,
   GET_TRANSACTIONS,
-  LOAD_TRANSACTION_PAGE
+  LOAD_TRANSACTION_PAGE,
+  SUBMIT_SCHEDULE_CHOICES
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -76,5 +77,11 @@ export const acceptOffer = (offer) => async dispatch => {
 
 export const getTransactions = () => async dispatch => {
   const res = await axios.get('/api/get_transactions');
+  dispatch({type: GET_TRANSACTIONS, payload: res.data});
+}
+
+export const submitScheduleChoices = (choices) => async dispatch => {
+  console.log(choices);
+  const res = await axios.post('/api/submit_schedule_choices', choices);
   dispatch({type: GET_TRANSACTIONS, payload: res.data});
 }

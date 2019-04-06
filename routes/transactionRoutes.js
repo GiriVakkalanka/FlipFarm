@@ -15,4 +15,13 @@ module.exports = app => {
       //console.log(transactions);
 	    res.send(offeredTransactions);
     });
+
+    app.post('/api/submit_schedule_choices', requireLogin, async (req, res) => {
+      //save to transaction
+      //alter transaction status
+
+      const {test} = req.body;
+      console.log(test);
+      res.send('Hi');
+    });
 }
