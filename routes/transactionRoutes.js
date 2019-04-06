@@ -9,7 +9,7 @@ const axios = require('axios');
 
 module.exports = app => {
     app.get('/api/get_transactions', requireLogin, async (req, res) => {
-      const offeredTransactions = await Transaction.find({offerUser:req.user.id, acceptUser:req.user.id});
+      const offeredTransactions = await Transaction.find().or([{offerUser:req.user.id}, {acceptUser:req.user.id}]);
       //const acceptedTransactions = await Transaction.find({acceptUser:req.user.id});
       //const transactions = [...offeredTransactions, ...acceptedTransactions];
       //console.log(transactions);
