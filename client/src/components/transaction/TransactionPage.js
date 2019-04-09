@@ -12,11 +12,13 @@ class TransactionPage extends Component {
       <div>
         {transactionPage.acceptUser}
         <br/>
+
+        <br/>
+        <DatePicker />
+        <br/>
         <button onClick={() => submitScheduleChoices(choice)}>
           submit
         </button>
-        <br/>
-        <DatePicker />
       </div>
     )
   }
