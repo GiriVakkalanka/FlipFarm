@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import DatePicker from '../datePicker/DatePicker';
+import DateChoiceList from '../datePicker/DateChoiceList';
 
 class TransactionPage extends Component {
   renderPage() {
@@ -16,6 +17,8 @@ class TransactionPage extends Component {
         <br/>
         <DatePicker addScheduleChoice={addScheduleChoice} />
         <br/>
+        <DateChoiceList scheduleChoices={scheduleChoices}/>
+        <br/>
         <button onClick={() => submitScheduleChoices(choice)}>
           submit
         </button>
@@ -24,11 +27,12 @@ class TransactionPage extends Component {
   }
 
   render() {
-    console.log(this.props.transactionPage);
+    //console.log(this.props.transactionPage);
     return (
       <div>
         <div>TransactionPage</div>
         <div>{this.renderPage()}</div>
+        {console.log(this.props.scheduleChoices)}
       </div>
     )
   }

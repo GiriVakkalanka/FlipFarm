@@ -102,7 +102,7 @@ class DatePicker extends Component {
           meridiem={meridiem}
         />
         <PickyDateTime
-          size="m"
+          size="s"
           mode={1}
           show={showPickyDateTime}
           onClose={() => this.setState({ showPickyDateTime: false })}
@@ -120,7 +120,9 @@ class DatePicker extends Component {
           onClearTime={res => this.onClearTime(res)}
           onResetDefaultDate={res => this.onResetDefaultDate(res)}
         />
+        <br/>
         <button onClick={() => this.props.addScheduleChoice(this.state)}>Add Date</button>
+
       </div>
     )
   }

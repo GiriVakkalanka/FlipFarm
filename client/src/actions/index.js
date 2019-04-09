@@ -98,6 +98,6 @@ export const removeScheduleChoice = choice => {
   return { type: REMOVE_SCHEDULE_CHOICE, payload: choice };
 }
 
-export const clearChoices = () => {
+export const clearScheduleChoices = () => {
   return { type: CLEAR_SCHEDULE_CHOICES, payload: null };
 }
