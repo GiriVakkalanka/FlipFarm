@@ -11,7 +11,9 @@ import {
   GET_TRANSACTIONS,
   LOAD_TRANSACTION_PAGE,
   SUBMIT_SCHEDULE_CHOICES,
-  ADD_SCHEDULE_CHOICE
+  ADD_SCHEDULE_CHOICE,
+  REMOVE_SCHEDULE_CHOICE,
+  CLEAR_SCHEDULE_CHOICES
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -88,6 +90,14 @@ export const submitScheduleChoices = (choices) => async dispatch => {
 }
 
 export const addScheduleChoice = choice => {
-  console.log(choice);
-  return { type: ADD_SCHEDULE_CHOICE, choice };
+  //console.log(choice);
+  return { type: ADD_SCHEDULE_CHOICE, payload: choice };
+}
+
+export const removeScheduleChoice = choice => {
+  return { type: REMOVE_SCHEDULE_CHOICE, payload: choice };
+}
+
+export const clearChoices = () => {
+  return { type: CLEAR_SCHEDULE_CHOICES, payload: null };
 }

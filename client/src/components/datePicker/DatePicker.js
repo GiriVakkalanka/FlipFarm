@@ -74,7 +74,7 @@ class DatePicker extends Component {
 
   onResetDefaultDate(res) {
     const { date, month, year } = res;
-    this.setState({ year: year, month: month, year: year });
+    this.setState({ year: year, month: month, date: date });
   }
 
   render() {
