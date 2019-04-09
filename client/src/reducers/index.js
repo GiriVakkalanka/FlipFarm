@@ -7,6 +7,7 @@ import transactionPageReducer from './transactionPageReducer';
 import inboxReducer from './inboxReducer';
 import outboxReducer from './outboxReducer';
 import transactionReducer from './transactionReducer';
+import scheduleChoiceReducer from './scheduleChoiceReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   transactionPage: transactionPageReducer,
   inbox: inboxReducer,
   outbox: outboxReducer,
-  transactions: transactionReducer
+  transactions: transactionReducer,
+  scheduleChoices: scheduleChoiceReducer
 });

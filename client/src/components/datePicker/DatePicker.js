@@ -120,6 +120,7 @@ class DatePicker extends Component {
           onClearTime={res => this.onClearTime(res)}
           onResetDefaultDate={res => this.onResetDefaultDate(res)}
         />
+        <button onClick={() => this.props.addScheduleChoice(this.state)}>Add Date</button>
       </div>
     )
   }

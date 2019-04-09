@@ -6,7 +6,7 @@ import DatePicker from '../datePicker/DatePicker';
 class TransactionPage extends Component {
   renderPage() {
     //eventually put a switch statement switching over acceptor/offerer
-    const {transactionPage, submitScheduleChoices} = this.props;
+    const {transactionPage, submitScheduleChoices, scheduleChoices, addScheduleChoice} = this.props;
     const choice = {test: 'test'}
     return (
       <div>
@@ -14,7 +14,7 @@ class TransactionPage extends Component {
         <br/>
 
         <br/>
-        <DatePicker />
+        <DatePicker addScheduleChoice={addScheduleChoice} />
         <br/>
         <button onClick={() => submitScheduleChoices(choice)}>
           submit
@@ -35,7 +35,10 @@ class TransactionPage extends Component {
 }
 
 function mapStateToProps(state) {
-  return {transactionPage: state.transactionPage}
+  return {
+    transactionPage: state.transactionPage,
+    scheduleChoices: state.scheduleChoices
+  }
 }
 
 export default connect(mapStateToProps, actions)(TransactionPage);

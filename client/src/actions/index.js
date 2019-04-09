@@ -10,7 +10,8 @@ import {
   GET_OUTBOX,
   GET_TRANSACTIONS,
   LOAD_TRANSACTION_PAGE,
-  SUBMIT_SCHEDULE_CHOICES
+  SUBMIT_SCHEDULE_CHOICES,
+  ADD_SCHEDULE_CHOICE
 } from './types';
 
 export const fetchUser = () => async dispatch => {
@@ -84,4 +85,9 @@ export const submitScheduleChoices = (choices) => async dispatch => {
   console.log(choices);
   const res = await axios.post('/api/submit_schedule_choices', choices);
   dispatch({type: GET_TRANSACTIONS, payload: res.data});
+}
+
+export const addScheduleChoice = choice => {
+  console.log(choice);
+  return { type: ADD_SCHEDULE_CHOICE, choice };
 }
