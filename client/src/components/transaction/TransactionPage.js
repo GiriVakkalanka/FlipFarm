@@ -19,7 +19,7 @@ class TransactionPage extends Component {
         <br/>
         <DateChoiceList scheduleChoices={scheduleChoices}/>
         <br/>
-        <button onClick={() => submitScheduleChoices(choice)}>
+        <button onClick={() => submitScheduleChoices(scheduleChoices)}>
           submit
         </button>
       </div>

@@ -20,8 +20,8 @@ module.exports = app => {
       //save to transaction
       //alter transaction status
 
-      const {test} = req.body;
-      console.log(test);
+      const choices = req.body;
+      console.log(choices[0]);
       res.send('Hi');
     });
 }
