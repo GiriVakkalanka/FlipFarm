@@ -19,7 +19,7 @@ class TransactionBox extends Component {
   render() {
     const { transactions, loadTransactionPage } = this.props;
     const uniqueTransactions = [...new Set(transactions)];
-    console.log(uniqueTransactions);
+    //console.log(uniqueTransactions);
 
     //console.log(transactions);
     return (

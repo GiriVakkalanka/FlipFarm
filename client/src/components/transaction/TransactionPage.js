@@ -8,10 +8,12 @@ class TransactionPage extends Component {
   renderPage() {
     //eventually put a switch statement switching over acceptor/offerer
     const {transactionPage, submitScheduleChoices, scheduleChoices, addScheduleChoice} = this.props;
-    const choice = {test: 'test'}
+    let updatedScheduleChoices = scheduleChoices;
+    updatedScheduleChoices = [...updatedScheduleChoices, transactionPage._id]
+    console.log(updatedScheduleChoices);
     return (
       <div>
-        {transactionPage.acceptUser}
+        {transactionPage._id}
         <br/>
 
         <br/>
@@ -19,7 +21,7 @@ class TransactionPage extends Component {
         <br/>
         <DateChoiceList scheduleChoices={scheduleChoices}/>
         <br/>
-        <button onClick={() => submitScheduleChoices(scheduleChoices)}>
+        <button onClick={() => submitScheduleChoices(updatedScheduleChoices)}>
           submit
         </button>
       </div>
@@ -32,7 +34,6 @@ class TransactionPage extends Component {
       <div>
         <div>TransactionPage</div>
         <div>{this.renderPage()}</div>
-        {console.log(this.props.scheduleChoices)}
       </div>
     )
   }

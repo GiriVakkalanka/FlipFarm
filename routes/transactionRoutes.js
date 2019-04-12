@@ -23,11 +23,16 @@ module.exports = app => {
       const choices = req.body;
       //console.log(choices[0]);
       let dates = [];
+      let transactionId;
 
       for (choice of choices) {
-        const fixedMonth = (parseInt(choice.month) - 1).toString();
-        const date = new Date(choice.year, fixedMonth, choice.date, choice.hour, choice.minute, choice.second );
-        dates.push(date);
+        if (choice.date) {
+          const fixedMonth = (parseInt(choice.month) - 1).toString();
+          const date = new Date(choice.year, fixedMonth, choice.date, choice.hour, choice.minute, choice.second );
+          dates.push(date);
+        } else {
+          transactionId = choice;
+        }
       }
 
       console.log(dates);
@@ -35,6 +40,12 @@ module.exports = app => {
          stringDate = date.toString()
          console.log(stringDate);
        }
-      res.send('Hi');
+
+      const transaction = await Transaction.findOne({_id: transactionId});
+      transaction.transactionStage = 'timeChoicesSent';
+      transaction.offerDates = dates;
+      const savedTransaction = await transaction.save();
+      console.log(transaction);
+      res.send(transaction);
     });
 }
