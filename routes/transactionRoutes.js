@@ -21,7 +21,20 @@ module.exports = app => {
       //alter transaction status
 
       const choices = req.body;
-      console.log(choices[0]);
+      //console.log(choices[0]);
+      let dates = [];
+
+      for (choice of choices) {
+        const fixedMonth = (parseInt(choice.month) - 1).toString();
+        const date = new Date(choice.year, fixedMonth, choice.date, choice.hour, choice.minute, choice.second );
+        dates.push(date);
+      }
+
+      console.log(dates);
+       for (date of dates) {
+         stringDate = date.toString()
+         console.log(stringDate);
+       }
       res.send('Hi');
     });
 }
