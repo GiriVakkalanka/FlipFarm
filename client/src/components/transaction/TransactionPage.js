@@ -6,26 +6,39 @@ import DateChoiceList from '../datePicker/DateChoiceList';
 
 class TransactionPage extends Component {
   renderPage() {
+    //console.log(this.props.auth);
+
     //eventually put a switch statement switching over acceptor/offerer
+
     const {transactionPage, submitScheduleChoices, scheduleChoices, addScheduleChoice} = this.props;
     let updatedScheduleChoices = scheduleChoices;
-    updatedScheduleChoices = [...updatedScheduleChoices, transactionPage._id]
-    console.log(updatedScheduleChoices);
-    return (
-      <div>
-        {transactionPage._id}
-        <br/>
+    updatedScheduleChoices = [...updatedScheduleChoices, transactionPage._id];
 
-        <br/>
-        <DatePicker addScheduleChoice={addScheduleChoice} />
-        <br/>
-        <DateChoiceList scheduleChoices={scheduleChoices}/>
-        <br/>
-        <button onClick={() => submitScheduleChoices(updatedScheduleChoices)}>
-          submit
-        </button>
-      </div>
-    )
+
+
+
+    console.log(transactionPage);
+
+    if (transactionPage.acceptUser === this.props.auth._id) {
+      return (
+        <div>
+          {transactionPage._id}
+          <br/>
+
+          <br/>
+          <DatePicker addScheduleChoice={addScheduleChoice} />
+          <br/>
+          <DateChoiceList scheduleChoices={scheduleChoices}/>
+          <br/>
+          <button onClick={() => submitScheduleChoices(updatedScheduleChoices)}>
+            submit
+          </button>
+        </div>
+      )
+    } else {
+      return <div>Waiting for the user to send dates. THey have 21 hrs left</div>
+    }
+
   }
 
   render() {
@@ -42,7 +55,8 @@ class TransactionPage extends Component {
 function mapStateToProps(state) {
   return {
     transactionPage: state.transactionPage,
-    scheduleChoices: state.scheduleChoices
+    scheduleChoices: state.scheduleChoices,
+    auth: state.auth
   }
 }
 
