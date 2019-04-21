@@ -7,36 +7,34 @@ import DateChoiceList from '../datePicker/DateChoiceList';
 class TransactionPage extends Component {
   renderPage() {
     //console.log(this.props.auth);
-
-    //eventually put a switch statement switching over acceptor/offerer
-
     const {transactionPage, submitScheduleChoices, scheduleChoices, addScheduleChoice} = this.props;
     let updatedScheduleChoices = scheduleChoices;
     updatedScheduleChoices = [...updatedScheduleChoices, transactionPage._id];
+    //console.log(transactionPage);
+    switch (transactionPage.transactionStage) {
+      case 'infoPending':
+        if (transactionPage.acceptUser === this.props.auth._id) {
+          return (
+            <div>
+              {transactionPage._id}
+              <br/>
 
+              <br/>
+              <DatePicker addScheduleChoice={addScheduleChoice} />
+              <br/>
+              <DateChoiceList scheduleChoices={scheduleChoices}/>
+              <br/>
+              <button onClick={() => submitScheduleChoices(updatedScheduleChoices)}>
+                submit
+              </button>
+            </div>
+          )
+        } else {
+          return <div>Waiting for the user to send dates. THey have 21 hrs left</div>
+        }
 
-
-
-    console.log(transactionPage);
-
-    if (transactionPage.acceptUser === this.props.auth._id) {
-      return (
-        <div>
-          {transactionPage._id}
-          <br/>
-
-          <br/>
-          <DatePicker addScheduleChoice={addScheduleChoice} />
-          <br/>
-          <DateChoiceList scheduleChoices={scheduleChoices}/>
-          <br/>
-          <button onClick={() => submitScheduleChoices(updatedScheduleChoices)}>
-            submit
-          </button>
-        </div>
-      )
-    } else {
-      return <div>Waiting for the user to send dates. THey have 21 hrs left</div>
+      default:
+        return <div>Default Case</div>
     }
 
   }

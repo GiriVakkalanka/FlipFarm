@@ -43,7 +43,7 @@ module.exports = app => {
 
       const transaction = await Transaction.findOne({_id: transactionId});
       transaction.transactionStage = 'timeChoicesSent';
-      transaction.offerDates = dates;
+      transaction.offeredDates = dates;
       const savedTransaction = await transaction.save();
       console.log(transaction);
       res.send(transaction);

@@ -19,7 +19,7 @@ const transactionSchema = new Schema({
     'dayOfTransaction',
     'ongoingTransaction',
     'transactionSuccess'
-  ], default: 'infoPending'},
+  ], default: 'infoPending'}
 
 });
 
