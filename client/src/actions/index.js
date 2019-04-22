@@ -89,6 +89,11 @@ export const submitScheduleChoices = (choices) => async dispatch => {
   dispatch({type: GET_TRANSACTIONS, payload: res.data});
 }
 
+export const chooseFromScheduleChoices = (choice) => async dispatch => {
+  const res = await axios.post('/api/choose_from_schedule_choices', choice);
+  dispatch({type: GET_TRANSACTIONS, payload: res.data});
+}
+
 export const addScheduleChoice = choice => {
   //console.log(choice);
   return { type: ADD_SCHEDULE_CHOICE, payload: choice };

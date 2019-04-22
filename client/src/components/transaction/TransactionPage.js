@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import DatePicker from '../datePicker/DatePicker';
 import DateChoiceList from '../datePicker/DateChoiceList';
+import DateChoiceItem from './DateChoiceItem';
+import _ from 'lodash';
+
+//choose between dateChoiceItem and dateChoiceList
 
 class TransactionPage extends Component {
   renderPage() {
@@ -31,6 +35,23 @@ class TransactionPage extends Component {
           )
         } else {
           return <div>Waiting for the user to send dates. THey have 21 hrs left</div>
+        }
+
+      case 'timeChoicesSent':
+        if (transactionPage.acceptUser === this.props._id) {
+          return (
+            <div>
+              Waiting for user to choose a date
+            </div>
+          )
+        } else {
+          return _.map(transactionPage.offeredDates, (date) => {
+            return (
+              <div key={date}>
+                <DateChoiceItem clickAction={this.props.chooseFromScheduleChoices} date={date}/>
+              </div>
+            )
+          })
         }
 
       default:

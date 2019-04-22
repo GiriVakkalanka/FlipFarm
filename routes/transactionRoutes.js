@@ -48,4 +48,9 @@ module.exports = app => {
       console.log(transaction);
       res.send(transaction);
     });
+
+    app.post('/api/choose_from_schedule_choices', requireLogin, async (req, res) => {
+      console.log(req.body);
+      res.send('hi')
+    });
 }
