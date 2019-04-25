@@ -50,7 +50,8 @@ module.exports = app => {
     });
 
     app.post('/api/choose_from_schedule_choices', requireLogin, async (req, res) => {
-      console.log(req.body);
+      const { date, transactionId } = req.body;
+      console.log(transactionId);
       res.send('hi')
     });
 }

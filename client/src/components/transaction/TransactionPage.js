@@ -38,7 +38,7 @@ class TransactionPage extends Component {
         }
 
       case 'timeChoicesSent':
-        if (transactionPage.acceptUser === this.props._id) {
+        if (transactionPage.acceptUser === this.props.auth._id) {
           return (
             <div>
               Waiting for user to choose a date
@@ -48,7 +48,7 @@ class TransactionPage extends Component {
           return _.map(transactionPage.offeredDates, (date) => {
             return (
               <div key={date}>
-                <DateChoiceItem clickAction={this.props.chooseFromScheduleChoices} date={date}/>
+                <DateChoiceItem transactionId={transactionPage._id} clickAction={this.props.chooseFromScheduleChoices} date={date}/>
               </div>
             )
           })

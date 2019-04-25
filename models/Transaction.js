@@ -9,6 +9,7 @@ const transactionSchema = new Schema({
   offerUser: {type: Schema.Types.ObjectId, ref: 'users'},
   acceptUser: {type: Schema.Types.ObjectId, ref: 'users'},
   offeredDates: [Date],
+  chosenDate: Date,
   transactionCompleted: { type: Boolean, default: false},
   transactionSuccess: { type: Boolean, default: false},
   acceptedOffer: { type: Schema.Types.ObjectId, ref: 'Offer'},
