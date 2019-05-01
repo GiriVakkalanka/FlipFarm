@@ -51,7 +51,8 @@ module.exports = app => {
 
     app.post('/api/choose_from_schedule_choices', requireLogin, async (req, res) => {
       const { date, transactionId } = req.body;
-      console.log(transactionId);
+      const updatedTransaction = await Transaction.findOneAndUpdate({_id: transactionId}, {chosenDate:date, transactionStage:'dateChosen'});
+      console.log(updatedTransaction);
       res.send('hi')
     });
 }
