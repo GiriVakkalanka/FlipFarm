@@ -13,6 +13,7 @@ const transactionSchema = new Schema({
   transactionCompleted: { type: Boolean, default: false},
   transactionSuccess: { type: Boolean, default: false},
   acceptedOffer: { type: Schema.Types.ObjectId, ref: 'Offer'},
+  changeable: { type: Boolean, default: true},
   transactionStage: { type: String, enum: [
     'infoPending',
     'timeChoicesSent',

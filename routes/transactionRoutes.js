@@ -51,8 +51,23 @@ module.exports = app => {
 
     app.post('/api/choose_from_schedule_choices', requireLogin, async (req, res) => {
       const { date, transactionId } = req.body;
-      const updatedTransaction = await Transaction.findOneAndUpdate({_id: transactionId}, {chosenDate:date, transactionStage:'dateChosen'});
-      console.log(updatedTransaction);
+      const updatedTransaction = await Transaction.findOneAndUpdate({_id: transactionId}, {chosenDate:date, transactionStage:'dateChosen'}, {new: true});
+
+      // const calcTimeDifference = (chosenDate, forDelivery) => {
+      //   const currentDate = Date.now();
+      //   console.log(chosenDate - currentDate);
+      //   return forDelivery ?
+      //     chosenDate - currentDate
+      //     :
+      //     (chosenDate - currentDate) - (86,400,000)
+      // }
+
+      //console.log(typeof updatedTransaction);
+      // const changeableTime = calcTimeDifference(date, false);
+      //console.log(changeableTime);
+      setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), 10000);
+      //setTimeout(() => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), 10000);
+      //console.log(updatedTransaction);
       res.send('hi')
     });
 }
