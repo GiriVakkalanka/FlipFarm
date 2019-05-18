@@ -53,21 +53,26 @@ module.exports = app => {
       const { date, transactionId } = req.body;
       const updatedTransaction = await Transaction.findOneAndUpdate({_id: transactionId}, {chosenDate:date, transactionStage:'dateChosen'}, {new: true});
 
-      // const calcTimeDifference = (chosenDate, forDelivery) => {
-      //   const currentDate = Date.now();
-      //   console.log(chosenDate - currentDate);
-      //   return forDelivery ?
-      //     chosenDate - currentDate
-      //     :
-      //     (chosenDate - currentDate) - (86,400,000)
-      // }
+      const calcTimeDifference = (chosenDate, forDelivery) => {
+        const chosenDateObject = new Date(chosenDate);
+        const currentDate = new Date();
+        if(forDelivery) {
+          return Math.abs(chosenDateObject - currentDate);
+        } else {
+          return Math.abs(chosenDateObject - currentDate) - 86400000;
+        }
+      }
 
-      //console.log(typeof updatedTransaction);
-      // const changeableTime = calcTimeDifference(date, false);
+      const changeableTime = calcTimeDifference(date, false);
+      //const transactionTime = calcTimeDifference(date, true);
       //console.log(changeableTime);
-      setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), 10000);
-      //setTimeout(() => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), 10000);
-      //console.log(updatedTransaction);
+      //console.log(transactionTime);
+      setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), changeableTime);
+
+      //setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), changeableTime);
+
+
+      //const updatedRecord = await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false});
       res.send('hi')
     });
 }

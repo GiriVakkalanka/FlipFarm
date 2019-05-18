@@ -3,15 +3,37 @@ import PickyDateTime from 'react-picky-date-time';
 import DateDisplay from './DateDisplay';
 
 class DatePicker extends Component {
-  state = {
-    showPickyDateTime: true,
-    date: '01',
-    month: '01',
-    year: '2000',
-    hour: '01',
-    minute: '10',
-    second: '40',
-    meridiem: 'PM'
+  // state = {
+  //   showPickyDateTime: true,
+  //   date: '01',
+  //   month: '01',
+  //   year: '2000',
+  //   hour: '01',
+  //   minute: '10',
+  //   second: '40',
+  //   meridiem: 'PM'
+  // }
+  constructor(props) {
+    //fix meridiem and hour
+    super(props);
+    const fullDate = new Date();
+    Date.prototype.getHours12 = function() {
+      return (this.getHours() + 11) % 12 + 1;
+    }
+    Date.prototype.getMeridiem = function() {
+     return this.getHours() > 12 ? 'PM' : 'AM';
+    }
+    this.state = {
+      showPickyDateTime: true,
+      date: fullDate.getDate().toString(),
+      month: (fullDate.getMonth() + 1).toString(),
+      year: fullDate.getFullYear().toString(),
+      hour: fullDate.getHours12().toString(),
+      minute: fullDate.getMinutes().toString(),
+      second: fullDate.getSeconds().toString(),
+      meridiem: fullDate.getMeridiem()
+    }
+
   }
 
   onClose() {

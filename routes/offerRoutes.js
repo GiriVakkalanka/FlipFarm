@@ -56,19 +56,19 @@ module.exports = app => {
 
     // setTimeout(timeoutTest, 90000);
 
-    const checkTimeChoicesSent = async () => {
-      const transactionToCheck = await Transaction.findOne({_id: savedTransaction._id});
-      if (transactionToCheck.transactionStage === 'infoPending') {
-        console.log('false');
-        return false;
-      } else if (transactionToCheck.transactionStage === 'timeChoicesSent') {
-        console.log('true');
-        return true;
-      }
-      return false;
-    }
-
-    setTimeout(checkTimeChoicesSent, 120000);
+    // const checkTimeChoicesSent = async () => {
+    //   const transactionToCheck = await Transaction.findOne({_id: savedTransaction._id});
+    //   if (transactionToCheck.transactionStage === 'infoPending') {
+    //     console.log('false');
+    //     return false;
+    //   } else if (transactionToCheck.transactionStage === 'timeChoicesSent') {
+    //     console.log('true');
+    //     return true;
+    //   }
+    //   return false;
+    // }
+    //
+    // setTimeout(checkTimeChoicesSent, 120000);
 
     res.send(newInbox);
   });
