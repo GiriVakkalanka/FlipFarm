@@ -6,6 +6,8 @@ const Item = mongoose.model('Item');
 const User = mongoose.model('users');
 const Offer = mongoose.model('Offer');
 const Transaction = mongoose.model('Transaction');
+const axios = require('axios');
+
 
 module.exports = app => {
   app.post('/api/submit_offer', requireLogin, async (req, res) => {
@@ -21,11 +23,37 @@ module.exports = app => {
       offerDate: Date.now()
     });
     offer.save();
-    //console.log(offer._doc)
+
+    const requestBody = {
+      'dropoff_address': '223 E 85TH ST, NY, NY, 10028',
+      'pickup_address': '1760 2ND AVE, NY, NY, 10128'
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      auth: {
+        username: '73a57e83-070e-4b95-9b14-a9154b0966eb',
+        password: ''
+      }
+    }
+    // const authentication = {
+    //   auth: {
+    //     username: '7dc694db-346a-4f4a-bfd0-ef3dedb0a2aa',
+    //     password: ''
+    //   }
+    // }
+
+    try {
+      const testCall = await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes',
+      requestBody, config);
+    } catch(err) {
+      console.log(err);
+    }
+
+
     res.send(offer) ;
-    // const submittedOfferItems = Offer.find({offerFrom: req.user.id}).populate('itemWanted');
-    // console.log(JSON.stringify(submittedOfferItems));
-    //res.send('hi');
+
   });
 
   app.get('/api/get_offer_inbox', requireLogin, async (req, res) => {

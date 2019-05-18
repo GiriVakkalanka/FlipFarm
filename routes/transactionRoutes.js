@@ -35,17 +35,17 @@ module.exports = app => {
         }
       }
 
-      console.log(dates);
-       for (date of dates) {
-         stringDate = date.toString()
-         console.log(stringDate);
-       }
+      // console.log(dates);
+      //  for (date of dates) {
+      //    stringDate = date.toString()
+      //    console.log(stringDate);
+      //  }
 
       const transaction = await Transaction.findOne({_id: transactionId});
       transaction.transactionStage = 'timeChoicesSent';
       transaction.offeredDates = dates;
       const savedTransaction = await transaction.save();
-      console.log(transaction);
+      //console.log(transaction);
       res.send(transaction);
     });
 
@@ -64,15 +64,29 @@ module.exports = app => {
       }
 
       const changeableTime = calcTimeDifference(date, false);
-      //const transactionTime = calcTimeDifference(date, true);
-      //console.log(changeableTime);
-      //console.log(transactionTime);
-      setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), changeableTime);
+      const transactionTime = calcTimeDifference(date, true);
+      const requestBody = {
+        'dropoff_address': '223 E 85TH ST, NY, NY, 10028',
+        'pickup_address': '1760 2ND AVE, NY, NY, 10128',
+      };
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      const authentication = {
+        auth: {
+          username: '73a57e83-070e-4b95-9b14-a9154b0966eb',
+          password: ''
+        }
+      }
 
       //setTimeout(async () => await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false}), changeableTime);
-
-
-      //const updatedRecord = await Transaction.findOneAndUpdate({_id: transactionId}, {changeable: false});
+//       setTimeout(async () => await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes', requestBody, auth: {username: '73a57e83-070e-4b95-9b14-a9154b0966eb
+// ', password: ''}), changeableTime)
+      const testCall = await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes',
+      requestBody, config, authentication);
+      //console.log(testCall);
       res.send('hi')
     });
 }
