@@ -1,12 +1,13 @@
 const _ = require('lodash');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
-
+require('util').inspect.defaultOptions.depth = null
 const Item = mongoose.model('Item');
 const User = mongoose.model('users');
 const Offer = mongoose.model('Offer');
 const Transaction = mongoose.model('Transaction');
 const axios = require('axios');
+const formurlencoded = require('form-urlencoded').default;
 
 
 module.exports = app => {
@@ -25,13 +26,13 @@ module.exports = app => {
     offer.save();
 
     const requestBody = {
-      'dropoff_address': '223 E 85TH ST, NY, NY, 10028',
-      'pickup_address': '1760 2ND AVE, NY, NY, 10128'
+      pickup_address: '1760 2ND AVE, NY, NY 10128',
+      dropoff_address: '223 E 85TH ST, NY, NY 10028'
     }
+    const encodedRequestBody = formurlencoded(requestBody);
+    //const requestBody = {};
     const config = {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
+
       auth: {
         username: '73a57e83-070e-4b95-9b14-a9154b0966eb',
         password: ''
@@ -45,12 +46,13 @@ module.exports = app => {
     // }
 
     try {
-      const testCall = await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes',
-      requestBody, config);
+      //console.log("-------------->>>>>")
+      const testCall = await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes', encodedRequestBody, config);
+      console.log(testCall.data)
     } catch(err) {
+      //console.log(err);
       console.log(err);
     }
-
 
     res.send(offer) ;
 
