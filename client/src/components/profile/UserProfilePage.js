@@ -5,6 +5,7 @@ import ItemInventory from '../items/ItemInventory';
 import OfferInbox from './OfferInbox';
 import OfferOutbox from './OfferOutbox';
 import TransactionList from '../transaction/TransactionList';
+import InfoForm from './InfoForm';
 
 class UserProfilePage extends Component {
 
@@ -15,14 +16,35 @@ class UserProfilePage extends Component {
   }
 
   render(){
-    const { inbox, outbox, transactions, loadTransactionPage } = this.props;
-    console.log(inbox);
+    const { auth, inbox, outbox, transactions, loadTransactionPage, infoFormValues } = this.props;
+
+    const defaultInfoValues = auth ?
+      {
+        name: this.props.auth.name,
+        addressOne: this.props.auth.addressOne,
+        addressTwo: this.props.auth.addressTwo,
+        city: this.props.auth.city,
+        state: this.props.auth.state,
+        zip: this.props.auth.zip,
+        phone: this.props.auth.phone
+      }
+      :
+      {
+        name: "",
+        addressOne: "",
+        addressTwo: "",
+        city: "",
+        state: "",
+        zip: "",
+        phone: ""
+      }
     return (
       <div>
         <div>
           Profile Page
         </div>
         <br/>
+        <InfoForm defaultInfoValues={defaultInfoValues}/>
         <br/>
         <ItemInventory location="profilePage"/>
         <OfferInbox
@@ -33,6 +55,7 @@ class UserProfilePage extends Component {
           offerList={outbox}
         />
         <TransactionList loadTransactionPage={loadTransactionPage} transactions={transactions}/>
+
       </div>
     );
   }

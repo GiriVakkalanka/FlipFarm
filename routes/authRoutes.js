@@ -25,4 +25,10 @@ module.exports = app => {
     //console.log(res);
     res.send(req.user);
   });
+
+  app.post('/api/update_user', (req, res) => {
+    console.log('update route called');
+    console.log(req.body);
+    res.send(req.user);
+  })
 };

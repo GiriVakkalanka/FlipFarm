@@ -6,7 +6,7 @@ export default function(state = null, action) {
     case FETCH_USER:
       return action.payload || false;
     case SUBMIT_ITEM:
-      console.log('Items from back end' + action.payload);
+      //console.log('Items from back end' + action.payload);
       return action.payload;
     default:
       return state;

@@ -46,7 +46,6 @@ module.exports = app => {
     // }
 
     try {
-      //console.log("-------------->>>>>")
       const testCall = await axios.post('https://api.postmates.com/v1/customers/cus_MCzCXsQspGsOjF/delivery_quotes', encodedRequestBody, config);
       console.log(testCall.data)
     } catch(err) {
